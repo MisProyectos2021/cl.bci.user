@@ -13,16 +13,9 @@ public class UserDTO {
 
     private String name;
 
-    @Email
-    @NotEmpty
     private String email; 
 
-    @Pattern.List({
-        @Pattern(regexp = "[^0123456789]*\\d[^0123456789]*\\d[^0123456789]*", message = "La password debe contener al menos dos digitos."),
-        @Pattern(regexp = "(?=.*[a-z]).+", message = "La password debe contener al menos una letra minuscula."),
-        @Pattern(regexp = "[^[A-Z]]*[A-Z]{1}[^[A-Z]]*", message = "La password debe contener una letra mayuscula."),
-        @Pattern(regexp = "(?=\\S+$).+", message = "La password no debe contener espacios en blanco")
-    })
+
     private String password;
 
 	private Timestamp created;

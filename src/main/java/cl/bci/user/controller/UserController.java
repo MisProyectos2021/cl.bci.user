@@ -51,6 +51,10 @@ public class UserController {
             user.setToken(getJWTToken(user.getName()));
             return new ResponseEntity<>(userService.login(user), HttpStatus.CREATED);
         } catch (Exception e) {
+            StringWriter sw1 = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw1));
+            String exceptionAsString1 = sw1.toString();
+            System.out.println(exceptionAsString1);
             return new ResponseEntity<>(new RespuestaJSON(RespuestaJSON.EstadoType.ERROR.getRespuestaJSONS(), mensajes.getMessage("user.error", null, LocaleContextHolder.getLocale())), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
